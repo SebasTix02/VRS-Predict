@@ -1,0 +1,15 @@
+﻿C:\Users\User\Desktop\Programacion\Valve\VRS\scripts\parse-standings.cjs:4
+ * Parses all live/*/standings_global_*.md files into a single JSON structure
+                                       ^
+System.Management.Automation.RemoteException
+SyntaxError: Unexpected token '.'
+    at internalCompileFunction (node:internal/vm:128:18)
+    at wrapSafe (node:internal/modules/cjs/loader:1279:20)
+    at Module._compile (node:internal/modules/cjs/loader:1331:27)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1426:10)
+    at Module.load (node:internal/modules/cjs/loader:1205:32)
+    at Module._load (node:internal/modules/cjs/loader:1021:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:142:12)
+    at node:internal/main/run_main_module:28:49
+System.Management.Automation.RemoteException
+Node.js v21.7.3

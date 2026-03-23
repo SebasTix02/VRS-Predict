@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VRS Prediction Dashboard - Analyze and predict Counter-Strike 2 regional rankings using Valve's open-source model data">
+  <title>VRS Predictions | CS2 Regional Rankings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-brand">
+      <span class="brand-icon">◆</span>
+      <span class="brand-text">VRS<span class="brand-accent">Predict</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#rankings" class="nav-link active" data-section="rankings">Rankings</a>
+      <a href="#explorer" class="nav-link" data-section="explorer">Team Explorer</a>
+      <a href="#predictions" class="nav-link" data-section="predictions">Predictions</a>
+      <a href="#compare" class="nav-link" data-section="compare">Compare</a>
+    </div>
+    <div class="nav-meta">
+      <span id="snapshot-info" class="meta-badge"></span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-pre">CS2 Regional Standings</span>
+        <span class="hero-main">Prediction Engine</span>
+      </h1>
+      <p class="hero-subtitle">
+        Analyze historical VRS data across <span id="hero-snapshots">40</span> snapshots and 
+        <span id="hero-teams">645</span> teams. Predict future rankings with linear regression.
+      </p>
+      <div id="hero-top5" class="hero-cards"></div>
+    </div>
+  </header>
+
+  <!-- Rankings Section -->
+  <section id="rankings" class="section">
+    <div class="section-header">
+      <h2>Current Global Rankings</h2>
+      <div class="section-controls">
+        <input type="text" id="rank-search" class="search-input" placeholder="Search teams..." autocomplete="off">
+        <select id="rank-region" class="select-input">
+          <option value="all">All Regions</option>
+          <option value="Europe">Europe</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+        </select>
+      </div>
+    </div>
+    <div id="rankings-table" class="table-container"></div>
+    <div id="rankings-pagination" class="pagination-controls"></div>
+  </section>
+
+  <!-- Team Explorer Section -->
+  <section id="explorer" class="section">
+    <div class="section-header">
+      <h2>Team Explorer</h2>
+      <div class="section-controls">
+        <div class="search-wrapper" style="position: relative;">
+          <input type="text" id="team-search" class="search-input" placeholder="Search for a team..." autocomplete="off">
+          <div id="team-suggestions" class="suggestions-dropdown"></div>
+        </div>
+      </div>
+    </div>
+    <div id="team-detail" class="team-detail-container">
+      <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p>Search for a team to see their ranking history and predictions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Predictions Section -->
+  <section id="predictions" class="section">
+    <div class="section-header">
+      <h2>Predicted Rankings</h2>
+      <div class="section-controls">
+        <label class="control-label">Predict for:</label>
+        <select id="predict-date" class="select-input">
+          <option value="30">+1 Month</option>
+          <option value="60">+2 Months</option>
+          <option value="90" selected>+3 Months</option>
+          <option value="180">+6 Months</option>
+        </select>
+        <select id="predict-method" class="select-input">
+          <option value="weighted" selected>Weighted (Recency Bias)</option>
+          <option value="linear">Linear (Equal Weight)</option>
+        </select>
+      </div>
+    </div>
+    <div id="predictions-table" class="table-container"></div>
+    <div id="predictions-pagination" class="pagination-controls"></div>
+  </section>
+
+  <!-- Compare Section -->
+  <section id="compare" class="section">
+    <div class="section-header">
+      <h2>Team Comparison</h2>
+      <div class="section-controls compare-controls">
+        <div class="compare-input-group">
+          <input type="text" id="compare-search-1" class="search-input" placeholder="Team 1..." autocomplete="off">
+          <div id="compare-suggestions-1" class="suggestions-dropdown"></div>
+        </div>
+        <span class="compare-vs">VS</span>
+        <div class="compare-input-group">
+          <input type="text" id="compare-search-2" class="search-input" placeholder="Team 2..." autocomplete="off">
+          <div id="compare-suggestions-2" class="suggestions-dropdown"></div>
+        </div>
+        <div class="compare-input-group">
+          <input type="text" id="compare-search-3" class="search-input" placeholder="Team 3 (optional)..." autocomplete="off">
+          <div id="compare-suggestions-3" class="suggestions-dropdown"></div>
+        </div>
+      </div>
+    </div>
+    <div id="compare-chart-container" class="chart-container">
+      <canvas id="compare-chart"></canvas>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <p>Data sourced from <a href="https://github.com/OpenVRS/counter-strike_regional_standings" target="_blank">OpenVRS</a> · 
+      Rankings engine by <a href="https://github.com/ValveSoftware/counter-strike_regional_standings" target="_blank">Valve</a></p>
+      <p class="footer-disclaimer">Unofficial predictions. Not affiliated with Valve Corporation.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "vrs-prediction-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "parse": "node ../scripts/parse-standings.js"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
